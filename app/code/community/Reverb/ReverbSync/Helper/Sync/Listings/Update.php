@@ -8,6 +8,7 @@ class Reverb_ReverbSync_Helper_Sync_Listings_Update
 {
     const UPDATE_FIELD_SWITCH_TITLE = 'ReverbSync/listings_update_switches/title';
     const UPDATE_FIELD_SWITCH_PRICE = 'ReverbSync/listings_update_switches/price';
+    const UPDATE_FIELD_SWITCH_DESCRIPTION = 'ReverbSync/listings_update_switches/description';
     const UPDATE_FIELD_SWITCH_INVENTORY_QTY = 'ReverbSync/listings_update_switches/inventory_qty';
 
     protected $_reverb_listing_update_fields = array('sku', 'reverb_sync');
@@ -54,6 +55,11 @@ class Reverb_ReverbSync_Helper_Sync_Listings_Update
             $magento_attributes[] = 'name';
         }
 
+        if ($this->isDescriptionUpdateEnabled())
+        {
+            $magento_attributes[] = 'description';
+        }
+
         $reverbProductMapper = Mage::getSingleton('reverbSync/mapper_product');
         /* @var $reverbProductMapper Reverb_ReverbSync_Model_Mapper_Product */
 
@@ -85,5 +91,10 @@ class Reverb_ReverbSync_Helper_Sync_Listings_Update
     public function isInventoryQtyUpdateEnabled()
     {
         return Mage::getStoreConfig(self::UPDATE_FIELD_SWITCH_INVENTORY_QTY);
+    }
+
+    public function isDescriptionUpdateEnabled()
+    {
+        return Mage::getStoreConfig(self::UPDATE_FIELD_SWITCH_DESCRIPTION);
     }
 }

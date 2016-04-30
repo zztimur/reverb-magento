@@ -1,3 +1,21 @@
+## 0.9.2
+* Fixes issue where orders that do not have an address fail to get created in Magento
+* New Field Mapping screen: you can now map any magento field to any reverb api field. Get a list of reverb api fields from https://reverb.com/swagger
+
+## 0.9.1
+* Reach back a day (instead of 11 minutes) for order updates. This compensates for broken or slow crons that may miss some orders. This behavior is often due to other plugins on your system slowing down cron functions.
+
+## 0.9.0
+* Base image is now sent as the primary image to Reverb if there is one set
+* New syncable fields: shipping_profile_name, finish, year.  Please create your own attributes in magento for these and map them in the settings screen if you want them.
+* Description syncs on update - control whether it syncs in the settings screen.
+* Changes internal category mapping to make category mapping more robust and less likely to break in the future. When installing this release a migration will be run. No impact to existing category mappings.
+* Listing sync cron runs every minute instead of every 2 minutes
+
+## 0.8.4
+* Fix occasional 404 Not Found errors while clearing sync tasks
+* Fix enterprise edition incompatibility due to version check
+
 ## 0.8.3
 * Accept offers can be set to yes/no on a per product basis
 * Map description field to any field on your products
